@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Chrome, Firefox OS and Opera Status Bar Color -->
+  <meta name="theme-color" content="#FFFFFF">
+  <meta property="og:title" content="Xcode 消除 Undeclared Selector 的警告 ,b,">
+    <meta property="og:type" content="blog">
+  <title>Xcode 消除 Undeclared Selector 的警告 ,b,</title>
+  <!-- Favicon -->
+    <link rel="shortcut icon" href="〽️">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+  <link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+  <link rel="stylesheet" type="text/css" href="css/notablog.css">
+  <link rel="stylesheet" type="text/css" href="css/theme.css">
+  <style>
+    :root {
+      font-size: 18px;
+    }
+
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+    <a href="index.html">
+      <div class="Navbar__Btn"><span>〽️</span> <span>Home</span></div>
+    </a>
+                    <span class="Navbar__Delim">&centerdot;</span>
+    <a href="iOS-Dev-Articles.html">
+      <div class="Navbar__Btn"> <span>📱iOS Articles</span></div>
+    </a>
+                                                                                                <span class="Navbar__Delim">&centerdot;</span>
+    <a href="about.html">
+      <div class="Navbar__Btn"><span>😀</span> <span>About</span></div>
+    </a>
+                  </nav>
+  <header class="Header">
+          <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+        <h1 class="Header__Title">Xcode 消除 Undeclared Selector 的警告 ,b,</h1>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Item DateTagBar__Date">Posted on Thu, May 9, 2019</span>
+                          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
+            <a href="tag/iOS-Dev.html">iOS-Dev</a>
+          </span>
+                <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--green">
+            <a href="tag/Xcode.html">Xcode</a>
+          </span>
+                  </div>
+          </header>
+      <article id="https://www.notion.so/1bf1d1a5809447bdaebe55cdd022e194" class="PageRoot"><div id="https://www.notion.so/b0cc0e157a1b4d2e866212d02e908ae4" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">文章曾发布于简书：</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.jianshu.com/p/fd900d4db216">https://www.jianshu.com/p/fd900d4db216</a></span></span></p></div><div id="https://www.notion.so/34f0bc148898445da4ece66ed98827dc" class="Image Image--PageWidth"><figure><a href="#"><img src="#" style="width:100%"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/2a8aec34527145f392cfac3d21b56c50" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">在开发的时候可能会遇到这样的问题，调用一些 SDK 的私有方法，但是会被 Xcode 警告方法不存在，这对于一个强迫症患者而言是不可接受的，于是我们可以手动让这个警告消失。</span></span></p></div><h2 id="https://www.notion.so/44439d1ede424208b2982b3d71afb931" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/44439d1ede424208b2982b3d71afb931"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">处理方法</strong></span></span></h2><h3 id="https://www.notion.so/9b6ad56f58474c708e8a8aafd6ffd4fc" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/9b6ad56f58474c708e8a8aafd6ffd4fc"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">第一步 获得错误名</strong></span></span></h3><div id="https://www.notion.so/049ee7b3f7774f27b793853403e28100" class="Image Image--PageWidth"><figure><a href="#"><img src="#" style="width:100%"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/1b26ce9683f4400688f53ece78854b6f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">对这个错误点击右键，选择 Reveal in Log。</span></span></p></div><div id="https://www.notion.so/f53f97aec4644ddbbf3bcdbc304f092a" class="Image Image--PageWidth"><figure><a href="#"><img src="#" style="width:100%"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><h3 id="https://www.notion.so/094537f96f734862a9d0a39e94fda263" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/094537f96f734862a9d0a39e94fda263"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">第二步 消除错误名</strong></span></span></h3><div id="https://www.notion.so/cb841d87632b40c2892c15955b3a1931" class="Image Image--PageWidth"><figure><a href="#"><img src="#" style="width:100%"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><pre id="https://www.notion.so/cd6f83f25eff4102b703f583626bc711" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token comment">// 清除警告</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">pragma</span> <span class="token expression">clang diagnostic push#pragma clang diagnostic ignored </span><span class="token string">"-Wundeclared-selector"</span> <span class="token comment">// 双引号内是你在上一步获得的错误名// 需要被消除⚠️警告的代码写在这里</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">pragma</span> <span class="token expression">clang diagnostic pop</span></span></span></span></span></code></pre><div id="https://www.notion.so/7f171e0ca2514ab9bfc29a94ea389741" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">当然这个方法不仅仅可以消除</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">Undeclared Selector</code></span><span class="SemanticString">这个警告，其他的警告也可以消除。</span></span></p></div><h3 id="https://www.notion.so/a3aa8c8f66f34460bb7872cb96a57d8e" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/a3aa8c8f66f34460bb7872cb96a57d8e"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">延伸</strong></span></span></h3><div id="https://www.notion.so/cb3e4b60b1fa4de68e13b9441f3f93ec" class="Bookmark"><a href="https://nshipster.cn/pragma/"><h5 class="Bookmark__Title">#pragma</h5><p class="Bookmark__Desc">pragma 声明是彰显 Objective-C 工艺的标志之一。虽然 #pragma 最初的目的是为了使得源代码在不同的编译器下兼容的，但精明的Xcode编码器将 #pragma 使用到了极致。 在现在的背景下，#pragma 避开了注释和代码之间的界限。作为预处理指令，#pragma 在编译时进行计算。但它并不像如 #ifdef...#endif 之类的宏，#pragma 的使用方式不会改变你的应用运行时的行为。相反的，#pragma 声明主要由 Xcode 用来完成两个主要任务：整理代码和防止编译器警告。 代码整理是一个卫生的问题。你如何组织你的代码反映的是你和你的工作。缺少惯性和内部一致性的代码表明要么有疏忽要么无能－－更糟的是，使得一个项目难以维持和协作。 好的习惯从#pragma mark 开始。就像这样： 在你的 @implementation 中使用 #pragma mark 来将代码分割成逻辑区块。这些逻辑区块不仅仅使得阅读代码本身容易许多，也为Xcode源导航增加了视觉线索（#pragma mark 声明前有一个水平分割并由破折号（ － ）开始）。 如果你的类符合任何@protocols，先将各协议的方法放在一起，并添加#pragma mark以及协议的名称。另一个好的惯例是将各子类方法根据它们的超类组合放在一起。比如，一个 NSInputStream子类应该放在 NSStream的组里。如 IBAction 的出口，或者对应于目标／动作，通知，或者KVO选择器之类的方法也值得拥有它们各自的区块。 你的代码应该干净到你可以吃掉它。所以花点时间整理你的.m 文件让它们比你生成它们时还干净。 #pragma mark十分主流。另一方面，用#pragma 声明来防止来自编译器或者静态分析器的警告现在还是很新鲜的。 你知道有什么是比有糟糕的格式的代码更烦人的吗？生成警告的代码。 尤其是第三方的代码。一个供应库要花很长时间来编译，终于成功编译时却生成了200+警告这种事实在很烦人。即使传送有一个警告的代码也很不好。 小提示：试试设置-Weverything 标志，并在你的build setting里选择&quot;Treat Warnings as Errors&quot;。这将会开启Xcode的困难模式。 可是有的时候并没有办法避免编译器警告。弃用通知和保留周期误报是这个情况可能发生的常见情况。在这些罕见的，你_绝对_肯定一个特定的编译器或者稳态分析器警告需要被抑制时，#pragma 就派上用场了： // completionBlock在AFURLConnectionOperation中被手动的设置为nil来打破保留周期。 #pragma clang diagnostic push #pragma clang diagnostic ignored &quot;-Warc-retain-cycles&quot; self .</p><p class="Bookmark__Link">https://nshipster.cn/pragma/</p></a></div></article>  <footer class="Footer">
+        <div>&copy; RadioHeadache 2019</div>
+        <div>&centerdot;</div>
+        <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+            rel="noopener noreferrer">Notablog</a>.
+        </div>
+    </footer>
+</body>
+
+</html>

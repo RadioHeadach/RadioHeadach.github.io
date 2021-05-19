@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Chrome, Firefox OS and Opera Status Bar Color -->
+  <meta name="theme-color" content="#FFFFFF">
+  <meta property="og:title" content="WKWebView 无法长截图的问题 ,b,">
+    <meta property="og:type" content="blog">
+  <title>WKWebView 无法长截图的问题 ,b,</title>
+  <!-- Favicon -->
+    <link rel="shortcut icon" href="〽️">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+  <link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+  <link rel="stylesheet" type="text/css" href="css/notablog.css">
+  <link rel="stylesheet" type="text/css" href="css/theme.css">
+  <style>
+    :root {
+      font-size: 18px;
+    }
+
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+    <a href="index.html">
+      <div class="Navbar__Btn"><span>〽️</span> <span>Home</span></div>
+    </a>
+                    <span class="Navbar__Delim">&centerdot;</span>
+    <a href="iOS-Dev-Articles.html">
+      <div class="Navbar__Btn"> <span>📱iOS Articles</span></div>
+    </a>
+                                                                                                <span class="Navbar__Delim">&centerdot;</span>
+    <a href="about.html">
+      <div class="Navbar__Btn"><span>😀</span> <span>About</span></div>
+    </a>
+                  </nav>
+  <header class="Header">
+          <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+        <h1 class="Header__Title">WKWebView 无法长截图的问题 ,b,</h1>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Item DateTagBar__Date">Posted on Wed, Feb 27, 2019</span>
+                          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
+            <a href="tag/iOS-Dev.html">iOS-Dev</a>
+          </span>
+                <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/WKWebView.html">WKWebView</a>
+          </span>
+                  </div>
+          </header>
+      <article id="https://www.notion.so/8cfe2f2113144626aacf73bff28c2bc9" class="PageRoot"><div id="https://www.notion.so/46e20dccdec541ada0232278d3494741" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">文章曾发布于简书：</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.jianshu.com/p/7ad6e404a46b">https://www.jianshu.com/p/7ad6e404a46b</a></span></span></p></div><div id="https://www.notion.so/0178df63ec9b44818a2dd942127dd523" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">因为业务需求，要做一个长截图的功能，又因为项目是基于</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">WKWebview</code></span><span class="SemanticString">开发的项目，所以长截图的需求就变成了对</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">WKWebview</code></span><span class="SemanticString">进行长截图。</span></span></p></div><div id="https://www.notion.so/418f408fca2b4fd5b1f2c8c46c269dc6" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">在网上搜索了一番，发现了一套长截图的逻辑，如下：</span></span></p></div><pre id="https://www.notion.so/2578f0e365bd457baaa07ae6b23d9c7c" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>snapshotForWKWebView<span class="token punctuation">:</span><span class="token punctuation">(</span>WKWebView <span class="token operator">*</span><span class="token punctuation">)</span>webView CaptureCompletionHandler<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">(</span><span class="token operator">^</span><span class="token punctuation">)</span><span class="token punctuation">(</span>UIImage <span class="token operator">*</span>capturedImage<span class="token punctuation">)</span><span class="token punctuation">)</span>completionHandler
+<span class="token punctuation">{</span>
+    <span class="token comment">// 1.为了截图时对 frame 进行操作不会出现闪屏等现象，我们需要盖一个“假”的 webView 到现在的位置上，并将真正的 webView “摘下来”。调用 snapshotViewAfterScreenUpdates 即可得到这样一个“假”的 webView</span>
+    UIView <span class="token operator">*</span>snapshotView <span class="token operator">=</span> <span class="token punctuation">[</span>webView snapshotViewAfterScreenUpdates<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    snapshotView<span class="token punctuation">.</span>frame <span class="token operator">=</span> webView<span class="token punctuation">.</span>frame<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>webView<span class="token punctuation">.</span>superview addSubview<span class="token punctuation">:</span>snapshotView<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 2. 保存真正的 webView 的偏移、位置等信息，以便截图完成之后“还原现场”</span>
+    CGPoint currentOffset <span class="token operator">=</span> webView<span class="token punctuation">.</span>scrollView<span class="token punctuation">.</span>contentOffset<span class="token punctuation">;</span>
+    CGRect currentFrame <span class="token operator">=</span> webView<span class="token punctuation">.</span>frame<span class="token punctuation">;</span>
+    UIView <span class="token operator">*</span>currentSuperView <span class="token operator">=</span> webView<span class="token punctuation">.</span>superview<span class="token punctuation">;</span>
+    NSUInteger currentIndex <span class="token operator">=</span> <span class="token punctuation">[</span>webView<span class="token punctuation">.</span>superview<span class="token punctuation">.</span>subviews indexOfObject<span class="token punctuation">:</span>webView<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 3. 用一个新的视图承载“真正的” webView，这个视图也是绘图所用到的上下文</span>
+    UIView <span class="token operator">*</span>containerView <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIView alloc<span class="token punctuation">]</span> initWithFrame<span class="token punctuation">:</span>webView<span class="token punctuation">.</span>bounds<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>webView removeFromSuperview<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>containerView addSubview<span class="token punctuation">:</span>webView<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 4. 将 webView 按照实际内容高度和屏幕高度分成 page 页</span>
+    CGSize totalSize <span class="token operator">=</span> webView<span class="token punctuation">.</span>scrollView<span class="token punctuation">.</span>contentSize<span class="token punctuation">;</span>
+    NSInteger page <span class="token operator">=</span> <span class="token function">ceil</span><span class="token punctuation">(</span>totalSize<span class="token punctuation">.</span>height <span class="token operator">/</span> containerView<span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    webView<span class="token punctuation">.</span>scrollView<span class="token punctuation">.</span>contentOffset <span class="token operator">=</span> CGPointZero<span class="token punctuation">;</span>
+    webView<span class="token punctuation">.</span>frame <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> containerView<span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">.</span>width<span class="token punctuation">,</span> webView<span class="token punctuation">.</span>scrollView<span class="token punctuation">.</span>contentSize<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">UIGraphicsBeginImageContextWithOptions</span><span class="token punctuation">(</span>totalSize<span class="token punctuation">,</span> YES<span class="token punctuation">,</span> UIScreen<span class="token punctuation">.</span>mainScreen<span class="token punctuation">.</span>scale<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span> drawContentPage<span class="token punctuation">:</span>containerView webView<span class="token punctuation">:</span>webView index<span class="token punctuation">:</span><span class="token number">0</span> maxIndex<span class="token punctuation">:</span>page completion<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">{</span>
+        UIImage <span class="token operator">*</span>snapshotImage <span class="token operator">=</span> <span class="token function">UIGraphicsGetImageFromCurrentImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">UIGraphicsEndImageContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">[</span>webView removeFromSuperview<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>currentSuperView insertSubview<span class="token punctuation">:</span>webView atIndex<span class="token punctuation">:</span>currentIndex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        webView<span class="token punctuation">.</span>frame <span class="token operator">=</span> currentFrame<span class="token punctuation">;</span>
+        webView<span class="token punctuation">.</span>scrollView<span class="token punctuation">.</span>contentOffset <span class="token operator">=</span> currentOffset<span class="token punctuation">;</span>
+
+        <span class="token comment">// 8. 调用 UIGraphicsGetImageFromCurrentImageContext 方法从当前上下文中获取到完整截图，将第 2 步中保存的信息重新赋予到 webView 上，“还原现场”</span>
+        <span class="token punctuation">[</span>snapshotView removeFromSuperview<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token function">completionHandler</span><span class="token punctuation">(</span>snapshotImage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>drawContentPage<span class="token punctuation">:</span><span class="token punctuation">(</span>UIView <span class="token operator">*</span><span class="token punctuation">)</span>targetView webView<span class="token punctuation">:</span><span class="token punctuation">(</span>WKWebView <span class="token operator">*</span><span class="token punctuation">)</span>webView index<span class="token punctuation">:</span><span class="token punctuation">(</span>NSInteger<span class="token punctuation">)</span>index maxIndex<span class="token punctuation">:</span><span class="token punctuation">(</span>NSInteger<span class="token punctuation">)</span>maxIndex completion<span class="token punctuation">:</span><span class="token punctuation">(</span>dispatch_block_t<span class="token punctuation">)</span>completion
+<span class="token punctuation">{</span>
+    <span class="token comment">// 5. 得到每一页的实际位置，并将 webView 往上推到该位置</span>
+    CGRect splitFrame <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> index <span class="token operator">*</span> <span class="token function">CGRectGetHeight</span><span class="token punctuation">(</span>targetView<span class="token punctuation">.</span>bounds<span class="token punctuation">)</span><span class="token punctuation">,</span> targetView<span class="token punctuation">.</span>bounds<span class="token punctuation">.</span>size<span class="token punctuation">.</span>width<span class="token punctuation">,</span> targetView<span class="token punctuation">.</span>frame<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CGRect myFrame <span class="token operator">=</span> webView<span class="token punctuation">.</span>frame<span class="token punctuation">;</span>
+    myFrame<span class="token punctuation">.</span>origin<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token operator">-</span><span class="token punctuation">(</span>index <span class="token operator">*</span> targetView<span class="token punctuation">.</span>frame<span class="token punctuation">.</span>size<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    webView<span class="token punctuation">.</span>frame <span class="token operator">=</span> myFrame<span class="token punctuation">;</span>
+
+    <span class="token function">dispatch_after</span><span class="token punctuation">(</span><span class="token function">dispatch_time</span><span class="token punctuation">(</span>DISPATCH_TIME_NOW<span class="token punctuation">,</span> <span class="token punctuation">(</span>int64_t<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">0.1</span> <span class="token operator">*</span> NSEC_PER_SEC<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">dispatch_get_main_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">^</span><span class="token punctuation">{</span>
+        <span class="token comment">// 6. 调用 drawViewHierarchyInRect 将当前位置的 webView 渲染到上下文中</span>
+        <span class="token punctuation">[</span>targetView drawViewHierarchyInRect<span class="token punctuation">:</span>splitFrame afterScreenUpdates<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 7. 如果还未到达最后一页，则递归调用 drawViewHierarchyInRect 方法进行渲染；如果已经渲染完了全部页，则回调通知截图完成</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> maxIndex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">[</span><span class="token keyword">self</span> drawContentPage<span class="token punctuation">:</span>targetView webView<span class="token punctuation">:</span>webView index<span class="token punctuation">:</span>index <span class="token operator">+</span> <span class="token number">1</span> maxIndex<span class="token punctuation">:</span>maxIndex completion<span class="token punctuation">:</span>completion<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token function">completion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</span></span></span></code></pre><div id="https://www.notion.so/d595142525f2484e81c1ee69af052dda" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">这套截图代码一定要获取</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">webView.scrollView.contentSize</code></span><span class="SemanticString">，也就是页面的总高度，但项目内页面使用的</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">framework7</code></span><span class="SemanticString">的css里面写了</span></span></p></div><pre id="https://www.notion.so/19f82f72794b412dadce388ea9f45a4e" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token selector">body</span><span class="token punctuation">{</span>
+  <span class="token property">height</span> <span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span></span></code></pre><div id="https://www.notion.so/b39a75745fd542768bdb0584e27031eb" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">因此获取页面的总高度都是等于屏幕的高度，导致一直无法截图，我尝试用KVO监听，也尝试过</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">[self.webView evaluateJavaScript:@&quot;document.body.scrollHeight&quot;]</code></span><span class="SemanticString">，所获取的页面高度都一直等于屏幕高度，而不等于页面的实际高度。因此这套代码在我的项目上无法实现长截图。</span></span></p></div></article>  <footer class="Footer">
+        <div>&copy; RadioHeadache 2019</div>
+        <div>&centerdot;</div>
+        <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+            rel="noopener noreferrer">Notablog</a>.
+        </div>
+    </footer>
+</body>
+
+</html>
