@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Chrome, Firefox OS and Opera Status Bar Color -->
+  <meta name="theme-color" content="#FFFFFF">
+  <meta property="og:title" content="整合百度语音识别功能到 CocoaPods 时无法通过校验的解决方案">
+    <meta name="description" content="Undefined symbols错误">
+  <meta property="og:description" content="Undefined symbols错误">
+    <meta property="og:type" content="blog">
+  <title>整合百度语音识别功能到 CocoaPods 时无法通过校验的解决方案</title>
+  <!-- Favicon -->
+    <link rel="shortcut icon" href="〽️">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+  <link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+  <link rel="stylesheet" type="text/css" href="css/notablog.css">
+  <link rel="stylesheet" type="text/css" href="css/theme.css">
+  <style>
+    :root {
+      font-size: 18px;
+    }
+
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+    <a href="index.html">
+      <div class="Navbar__Btn"><span>〽️</span> <span>Home</span></div>
+    </a>
+                    <span class="Navbar__Delim">&centerdot;</span>
+    <a href="iOS-Dev-Articles.html">
+      <div class="Navbar__Btn"> <span>📱iOS Articles</span></div>
+    </a>
+                                                                                                <span class="Navbar__Delim">&centerdot;</span>
+    <a href="about.html">
+      <div class="Navbar__Btn"><span>😀</span> <span>About</span></div>
+    </a>
+                          </nav>
+  <header class="Header">
+          <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+        <h1 class="Header__Title">整合百度语音识别功能到 CocoaPods 时无法通过校验的解决方案</h1>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Item DateTagBar__Date">Posted on Sun, Dec 30, 2018</span>
+                          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
+            <a href="tag/iOS-Dev.html">iOS-Dev</a>
+          </span>
+                <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--purple">
+            <a href="tag/CocoaPods.html">CocoaPods</a>
+          </span>
+                  </div>
+          </header>
+      <article id="https://www.notion.so/8a335058b0764279af585c9d767fb5b4" class="PageRoot"><div id="https://www.notion.so/dc368ae5a44f47b780a2187df107b158" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">文章曾发布于简书：</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.jianshu.com/p/02ff60ff75a6">https://www.jianshu.com/p/02ff60ff75a6</a></span></span></p></div><ul id="https://www.notion.so/1dd5114df33946bab3c3db562ce07e13" class="ColorfulBlock ColorfulBlock--ColorGray TableOfContents"><li class="TableOfContents__Item"><a href="#https://www.notion.so/f0ff6ab479a7468cb3bf9966ee369ea8"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">1 出现的问题</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/2fb906a7904346028960ff4f7afac452"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">2 解决思路</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/314e295838274b2f8fabcbd81338f653"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">3 解决方案</span></span></div></a></li></ul><div id="https://www.notion.so/fece3dc746e54c0db21223b751ebd393" class="Divider"></div><h1 id="https://www.notion.so/f0ff6ab479a7468cb3bf9966ee369ea8" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/f0ff6ab479a7468cb3bf9966ee369ea8"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">1 出现的问题</span></span></h1><div id="https://www.notion.so/6515bd2e92e34e8eaacd73fa8be85e41" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">由于工作需要，我要把</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">百度语音识别SDK</code></span><span class="SemanticString">整合到 CocoaPods 内，再开发完要进行校验的时候出现了如下问题：</span></span></p></div><div id="https://www.notion.so/d84b58d8e65f475db5d462fba47c6ae0" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">图1: 进行 CocoaPods 检验时出现的问题</span></span></p></div><div id="https://www.notion.so/fe746a4cde884249ba4f10e40fdec228" class="Image Image--PageWidth"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4c73a98c-1a3b-4200-94bf-90bee62684a8%2F187394-8e3e1248863fc7d0.png?width=2518&amp;table=block&amp;id=fe746a4c-de88-4249-ba4f-10e40fdec228"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4c73a98c-1a3b-4200-94bf-90bee62684a8%2F187394-8e3e1248863fc7d0.png?width=2518&amp;table=block&amp;id=fe746a4c-de88-4249-ba4f-10e40fdec228" style="width:100%"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><h1 id="https://www.notion.so/2fb906a7904346028960ff4f7afac452" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/2fb906a7904346028960ff4f7afac452"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">2 解决思路</span></span></h1><div id="https://www.notion.so/098141b342294470a5978784292e0d3c" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">由图中可以看到，问题出在 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">libBaiduSpeechSDK.a</code></span><span class="SemanticString"> 这个二进制文件，在 Google 上搜索了这个文件，发现也有其他人遇到了这样的问题 https://www.jianshu.com/p/fea0a24def1c</span></span></p></div><div id="https://www.notion.so/0fb7e7abf787446b80c1c2b5ac02f2e7" class="Image Image--Normal"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F77998edb-f7fa-49fb-9560-58d0d2bd4207%2F187394-a7a4a9407f000d75.png?width=687&amp;table=block&amp;id=0fb7e7ab-f787-446b-80c1-c2b5ac02f2e7"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F77998edb-f7fa-49fb-9560-58d0d2bd4207%2F187394-a7a4a9407f000d75.png?width=687&amp;table=block&amp;id=0fb7e7ab-f787-446b-80c1-c2b5ac02f2e7" style="width:687px"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/1069cf2d8097402ea1e838357f258658" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">来源：https://www.jianshu.com/p/fea0a24def1c</span></span></p></div><div id="https://www.notion.so/51e898fffb9c40fab3d143a5620aea61" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">文章作者提供的解决方案是 &gt;将libstdc++.dylib换成libstdc++.6.0.9.dylib即可</span></span></p></div><div id="https://www.notion.so/fa5d884d81464a61aa778f8a1f1b28b2" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">但该作者问题里面缺失的编译与我的不同，于是我直接搜索我确实的编译标志，得到如下的结果： http://ask.dcloud.net.cn/question/4040</span></span></p></div><h1 id="https://www.notion.so/314e295838274b2f8fabcbd81338f653" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/314e295838274b2f8fabcbd81338f653"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">3 解决方案</span></span></h1><div id="https://www.notion.so/371b333bce1246699ad44e0a211cfdb3" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">添加CoreTelephony.framework，添加方法为：</span></span></p></div><div id="https://www.notion.so/9257419b6337432d80b6270f52ab394b" class="Image Image--Normal"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbeb03b80-bc66-4489-bf57-0b833cd066ff%2F187394-c21c9a3bd599db79.png?width=628&amp;table=block&amp;id=9257419b-6337-432d-80b6-270f52ab394b"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbeb03b80-bc66-4489-bf57-0b833cd066ff%2F187394-c21c9a3bd599db79.png?width=628&amp;table=block&amp;id=9257419b-6337-432d-80b6-270f52ab394b" style="width:628px"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/e308a87f2c884e90a925ed4ad6ea4e06" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">在 podspec 文件的 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">s.framework</code></span><span class="SemanticString"> 后面加上 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&quot;CoreTelephony&quot;</code></span><span class="SemanticString">。</span></span></p></div><div id="https://www.notion.so/98b3ed3ef9b74288a279b9168d97c06f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">完毕。</span></span></p></div></article>  <footer class="Footer">
+        <div>&copy; RadioHeadache 2019</div>
+        <div>&centerdot;</div>
+        <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+            rel="noopener noreferrer">Notablog</a>.
+        </div>
+    </footer>
+</body>
+
+</html>
