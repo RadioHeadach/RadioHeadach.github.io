@@ -3,30 +3,36 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <!-- Chrome, Firefox OS and Opera Status Bar Color -->
-  <meta name="theme-color" content="#FFFFFF">
-  <meta property="og:title" content="WKWebView设置Cookie">
-    <meta name="description" content="分别介绍了iOS11以上系统和11以下系统设置Cookie的方法">
-  <meta property="og:description" content="分别介绍了iOS11以上系统和11以下系统设置Cookie的方法">
-    <meta property="og:type" content="blog">
-  <title>WKWebView设置Cookie</title>
-  <!-- Favicon -->
-    <link rel="shortcut icon" href="🌫️">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
-  <link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
-  <link rel="stylesheet" type="text/css" href="css/notablog.css">
-  <link rel="stylesheet" type="text/css" href="css/theme.css">
-  <style>
-    :root {
-      font-size: 18px;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
 
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F45b4de35-e668-4501-b8cd-711c64060c4e%2F5296676_ocean_sea_splash_surf_water_icon.png?table=collection&amp;id=6203be97-46d6-4bfc-9ce6-4457199ab784">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>WKWebView设置Cookie&nbsp;|&nbsp;RadioHeadache</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="WKWebView设置Cookie">
+  
+    <meta name="description" content="分别介绍了iOS11以上系统和11以下系统设置Cookie的方法">
+    <meta property="og:description" content="分别介绍了iOS11以上系统和11以下系统设置Cookie的方法">
+  
+  
+  <style>
     .DateTagBar {
       margin-top: 1.0rem;
     }
@@ -35,37 +41,128 @@
 
 <body>
   <nav class="Navbar">
-    <a href="index.html">
-      <div class="Navbar__Btn"><span>🌫️</span> <span>Home</span></div>
-    </a>
-                                                            <span class="Navbar__Delim">&centerdot;</span>
-    <a href="iOS-Dev-Articles.html">
-      <div class="Navbar__Btn"> <span>📱iOS Articles</span></div>
-    </a>
-                                                                                                <span class="Navbar__Delim">&centerdot;</span>
-    <a href="about.html">
-      <div class="Navbar__Btn"><span>😀</span> <span>About</span></div>
-    </a>
-                                <span class="Navbar__Delim">&centerdot;</span>
-    <a href="newsletter.html">
-      <div class="Navbar__Btn"><span>📟</span> <span>Newsletter</span></div>
-    </a>
-          </nav>
-  <header class="Header">
-          <div class="Header__Spacer Header__Spacer--NoCover">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F45b4de35-e668-4501-b8cd-711c64060c4e%2F5296676_ocean_sea_splash_surf_water_icon.png?table=collection&amp;id=6203be97-46d6-4bfc-9ce6-4457199ab784"></span>&nbsp;
+      
+      <span>Home</span>
     </div>
-        <h1 class="Header__Title">WKWebView设置Cookie</h1>
-            <div class="DateTagBar">
-                <span class="DateTagBar__Item DateTagBar__Date">Posted on Mon, May 24, 2021</span>
-                          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="iOS-Dev-Articles.html">
+        <div class="Navbar__Btn">
+          
+          <span>📱iOS Articles</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="daily-logs.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🔖&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Daily Log</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;😀&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="newsletter.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📟&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Newsletter</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+    <h1 class="Header__Title">WKWebView设置Cookie</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Mon, May 24, 2021</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
             <a href="tag/iOS-Dev.html">iOS-Dev</a>
           </span>
-                <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
             <a href="tag/WKWebView.html">WKWebView</a>
           </span>
-                  </div>
-          </header>
-      <article id="https://www.notion.so/6bae241d48c546f3885b1a207f4c1a8c" class="PageRoot"><ul id="https://www.notion.so/1ae99d0c80ff4209af6030c9da23c72b" class="ColorfulBlock ColorfulBlock--ColorGray TableOfContents"><li class="TableOfContents__Item"><a href="#https://www.notion.so/5eba312cc19c431194dee6dbbb43491e"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">iOS 11 and Later</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/50b707ebd96a443a96e0d919bd3e05ab"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">iOS 10 and Below</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/9125920a9aa64dc2ae7f5a0ed07d40d4"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">加载请求</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/894f70429dd0442dbdaff0be29e838ec"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">插入cookie</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/b0305863d56f4095a1a41c32f67bf359"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">插入Cookie:</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">init</code></span><span class="SemanticString">方法，应对需要cookie才能加载资源的情景</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/307c94a1163a413091d0531a2ece753a"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">获取Cookie:回调，应对cookie的更新</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/b6fa919aa0414791936d9a9e0cc165e7"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">Tricky Part</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/f8825b734e864ca3a0b8a888d58c5280"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">延伸阅读</span></span></div></a></li></ul><h1 id="https://www.notion.so/5eba312cc19c431194dee6dbbb43491e" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/5eba312cc19c431194dee6dbbb43491e"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">iOS 11 and Later</span></span></h1><pre id="https://www.notion.so/4b9cb4b3745345a2a62855daa9d99eb2" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>NSString <span class="token operator">*</span>cookieString <span class="token operator">=</span> <span class="token string">@"SHRIOSESSIONID=e863c201-613d-440a-964d-b5ad864fa465; auth_code=1477029363789178f78272114a086c76ea569; tif_wwlid=0b43bdd4e9b21178f782721ee2b9ac4b4b24e"</span><span class="token punctuation">;</span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/6bae241d48c546f3885b1a207f4c1a8c" class="PageRoot"><ul id="https://www.notion.so/1ae99d0c80ff4209af6030c9da23c72b" class="ColorfulBlock ColorfulBlock--ColorGray TableOfContents"><li class="TableOfContents__Item"><a href="#https://www.notion.so/5eba312cc19c431194dee6dbbb43491e"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">iOS 11 and Later</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/50b707ebd96a443a96e0d919bd3e05ab"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">iOS 10 and Below</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/9125920a9aa64dc2ae7f5a0ed07d40d4"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">加载请求</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/894f70429dd0442dbdaff0be29e838ec"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">插入cookie</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/b0305863d56f4095a1a41c32f67bf359"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">插入Cookie:</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">init</code></span><span class="SemanticString">方法，应对需要cookie才能加载资源的情景</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/307c94a1163a413091d0531a2ece753a"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">获取Cookie:回调，应对cookie的更新</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/b6fa919aa0414791936d9a9e0cc165e7"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">Tricky Part</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/f8825b734e864ca3a0b8a888d58c5280"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">延伸阅读</span></span></div></a></li></ul><h1 id="https://www.notion.so/5eba312cc19c431194dee6dbbb43491e" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/5eba312cc19c431194dee6dbbb43491e"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">iOS 11 and Later</span></span></h1><pre id="https://www.notion.so/4b9cb4b3745345a2a62855daa9d99eb2" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>NSString <span class="token operator">*</span>cookieString <span class="token operator">=</span> <span class="token string">@"SHRIOSESSIONID=e863c201-613d-440a-964d-b5ad864fa465; auth_code=1477029363789178f78272114a086c76ea569; tif_wwlid=0b43bdd4e9b21178f782721ee2b9ac4b4b24e"</span><span class="token punctuation">;</span>
     NSArray<span class="token operator">&lt;</span>NSString<span class="token operator">*</span><span class="token operator">></span><span class="token operator">*</span> cookies <span class="token operator">=</span> <span class="token punctuation">[</span>cookieString componentsSeparatedByString<span class="token punctuation">:</span><span class="token string">@";"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span>NSString <span class="token operator">*</span>cookie <span class="token keyword">in</span> cookies<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         NSString <span class="token operator">*</span>cookieWithURL <span class="token operator">=</span> <span class="token punctuation">[</span>NSString stringWithFormat<span class="token punctuation">:</span><span class="token string">@"%@; ORIGINURL=%@"</span><span class="token punctuation">,</span> cookie<span class="token punctuation">,</span> <span class="token punctuation">[</span>NSURL URLWithString<span class="token punctuation">:</span><span class="token operator">@</span>"https<span class="token punctuation">:</span><span class="token comment">//xtbgsafe.gdzwfw.gov.cn/rstoa/instance-web/minstone/workflow/ipadFramePreview?readOnly=1&amp;flowId=2264&amp;stepCode=1&amp;flowInid=88779&amp;stepInco=101721&amp;dealIndx=0&amp;curPage=mark"]];</span>
@@ -246,13 +343,14 @@ function <span class="token function">loginSucceed</span><span class="token punc
                                                     forMainFrameOnly<span class="token punctuation">:</span>NO<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">[</span>userContentController addUserScript<span class="token punctuation">:</span>cookieOutScript<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">[</span>userContentController addScriptMessageHandler<span class="token punctuation">:</span>handler
-                                          name<span class="token punctuation">:</span>Y_HANDLER_NAME<span class="token punctuation">]</span><span class="token punctuation">;</span></span></span></span></code></pre><div id="https://www.notion.so/7b095e637432479d9f6e4f2f200f3290" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">这意味着，根据</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">injectionTime:WKUserScriptInjectionTimeAtDocumentStart</code></span><span class="SemanticString">，每次页面载入/刷新，都会调用这个</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">cookieOutScript</code></span><span class="SemanticString">，把页面的cookie返回给原生，好让原生把最新的cookie保存到</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">NSHTTPCookieStorage</code></span><span class="SemanticString">内</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">。</strong></span></span></p></div><h1 id="https://www.notion.so/f8825b734e864ca3a0b8a888d58c5280" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/f8825b734e864ca3a0b8a888d58c5280"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">延伸阅读</span></span></h1><div id="https://www.notion.so/707464dff5484e7084039d908b76b110" class="Bookmark"><a href="https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537172-addscriptmessagehandler?language=objc"><h5 class="Bookmark__Title">Apple Developer Documentation</h5><p class="Bookmark__Link">https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537172-addscriptmessagehandler?language=objc</p></a></div><div id="https://www.notion.so/8ceed92e988f40f4aa0d8452926bbb15" class="Bookmark"><a href="https://www.jianshu.com/p/905b40e609e2"><h5 class="Bookmark__Title">iOS与JS交互之WKWebView-WKScriptMessageHandler协议</h5><p class="Bookmark__Desc">级别：★★☆☆☆ 标签：「iOS与JS交互」「WKWebView与JS交互」「WKJSMessageHandler」 作者： Xs·H 审校： QiShare团队 先解释下标题：&quot;iOS与JS交互&quot;。iOS指 iOS原生代码（文章只有 OC示例），JS指 WEB前端（不单指 JavaScript），交互指 JS调用iOS和 iOS调用JS。 作者将iOS与JS交互总结成了6种方式，并将逐一介绍。目录如下： 本文介绍如果使用 WKWebView的 WKScriptMessageHandler实现 iOS与 JS交互。 WKWebView是 Apple在iOS8推出的 Webkit框架中的负责网页的渲染与展示的类，相比 UIWebView速度更快，占用内存更少，支持更多的 HTML特性。 WKScriptMessageHandler是 WebKit提供的一种在 WKWebView上进行 JS 消息控制的协议。 一、JS调用iOS： //! 登录 function login() { var token = &quot;js_tokenString&quot;; loginSucceed(token); } //! 登录成功 function loginSucceed(token) { var action = &quot;loginSucceed&quot;; window.webkit.messageHandlers.jsToOc.postMessage(action, token); } //!</p><p class="Bookmark__Link">https://www.jianshu.com/p/905b40e609e2</p></a></div><div id="https://www.notion.so/d5c05829bf134510a6740964e838dfbc" class="Bookmark"><a href="https://juejin.cn/post/6844903560686108679"><h5 class="Bookmark__Title">iOS WKWebView与JS交互</h5><p class="Bookmark__Desc">1.1 WKScriptMessageHandler协议 WKScriptMessageHandler其实就是一个遵循的协议，它能让网页通过JS把消息发送给OC。其中协议方法。 /*! @abstract Invoked when a script message is received from a webpage. @param userContentController The user content controller invoking the delegate method. @param message The script message received.</p><p class="Bookmark__Link">https://juejin.cn/post/6844903560686108679</p></a></div><div id="https://www.notion.so/578dcd5a76d14d31a2286b165917fcdc" class="Bookmark"><a href="https://www.fabrizioduroni.it/2019/08/03/html-javascript-to-native-communication-ios/"><h5 class="Bookmark__Title">Web to native code communication on iOS using WKScriptMessageHandler</h5><p class="Bookmark__Desc">Did you know that it is possible to call Swift code from the JavaScript code of a web page displayed inside a WKWebView? Sooner or later every mobile developer in the world had the following specific need: integrate a website page inside an app.</p><p class="Bookmark__Link">https://www.fabrizioduroni.it/2019/08/03/html-javascript-to-native-communication-ios/</p></a></div><div id="https://www.notion.so/fd2741acb1674d5e9b1040a8bf600b1f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div></article>  <footer class="Footer">
-        <div>&copy; RadioHeadache 2019</div>
-        <div>&centerdot;</div>
-        <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
-            rel="noopener noreferrer">Notablog</a>.
-        </div>
-    </footer>
+                                          name<span class="token punctuation">:</span>Y_HANDLER_NAME<span class="token punctuation">]</span><span class="token punctuation">;</span></span></span></span></code></pre><div id="https://www.notion.so/7b095e637432479d9f6e4f2f200f3290" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">这意味着，根据</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">injectionTime:WKUserScriptInjectionTimeAtDocumentStart</code></span><span class="SemanticString">，每次页面载入/刷新，都会调用这个</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">cookieOutScript</code></span><span class="SemanticString">，把页面的cookie返回给原生，好让原生把最新的cookie保存到</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">NSHTTPCookieStorage</code></span><span class="SemanticString">内</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">。</strong></span></span></p></div><h1 id="https://www.notion.so/f8825b734e864ca3a0b8a888d58c5280" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/f8825b734e864ca3a0b8a888d58c5280"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">延伸阅读</span></span></h1><div id="https://www.notion.so/707464dff5484e7084039d908b76b110" class="Bookmark"><a href="https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537172-addscriptmessagehandler?language=objc"><h5 class="Bookmark__Title">Apple Developer Documentation</h5><p class="Bookmark__Link">https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537172-addscriptmessagehandler?language=objc</p></a></div><div id="https://www.notion.so/8ceed92e988f40f4aa0d8452926bbb15" class="Bookmark"><a href="https://www.jianshu.com/p/905b40e609e2"><h5 class="Bookmark__Title">iOS与JS交互之WKWebView-WKScriptMessageHandler协议</h5><p class="Bookmark__Desc">级别：★★☆☆☆ 标签：「iOS与JS交互」「WKWebView与JS交互」「WKJSMessageHandler」 作者： Xs·H 审校： QiShare团队 先解释下标题：&quot;iOS与JS交互&quot;。iOS指 iOS原生代码（文章只有 OC示例），JS指 WEB前端（不单指 JavaScript），交互指 JS调用iOS和 iOS调用JS。 作者将iOS与JS交互总结成了6种方式，并将逐一介绍。目录如下： 本文介绍如果使用 WKWebView的 WKScriptMessageHandler实现 iOS与 JS交互。 WKWebView是 Apple在iOS8推出的 Webkit框架中的负责网页的渲染与展示的类，相比 UIWebView速度更快，占用内存更少，支持更多的 HTML特性。 WKScriptMessageHandler是 WebKit提供的一种在 WKWebView上进行 JS 消息控制的协议。 一、JS调用iOS： //! 登录 function login() { var token = &quot;js_tokenString&quot;; loginSucceed(token); } //! 登录成功 function loginSucceed(token) { var action = &quot;loginSucceed&quot;; window.webkit.messageHandlers.jsToOc.postMessage(action, token); } //!</p><p class="Bookmark__Link">https://www.jianshu.com/p/905b40e609e2</p></a></div><div id="https://www.notion.so/d5c05829bf134510a6740964e838dfbc" class="Bookmark"><a href="https://juejin.cn/post/6844903560686108679"><h5 class="Bookmark__Title">iOS WKWebView与JS交互</h5><p class="Bookmark__Desc">1.1 WKScriptMessageHandler协议 WKScriptMessageHandler其实就是一个遵循的协议，它能让网页通过JS把消息发送给OC。其中协议方法。 /*! @abstract Invoked when a script message is received from a webpage. @param userContentController The user content controller invoking the delegate method. @param message The script message received.</p><p class="Bookmark__Link">https://juejin.cn/post/6844903560686108679</p></a></div><div id="https://www.notion.so/578dcd5a76d14d31a2286b165917fcdc" class="Bookmark"><a href="https://www.fabrizioduroni.it/2019/08/03/html-javascript-to-native-communication-ios/"><h5 class="Bookmark__Title">Web to native code communication on iOS using WKScriptMessageHandler</h5><p class="Bookmark__Desc">Did you know that it is possible to call Swift code from the JavaScript code of a web page displayed inside a WKWebView? Sooner or later every mobile developer in the world had the following specific need: integrate a website page inside an app.</p><p class="Bookmark__Link">https://www.fabrizioduroni.it/2019/08/03/html-javascript-to-native-communication-ios/</p></a></div><div id="https://www.notion.so/fd2741acb1674d5e9b1040a8bf600b1f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div></article>
+  <footer class="Footer">
+  <div>&copy; RadioHeadache 2019-2021</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
 </body>
 
 </html>

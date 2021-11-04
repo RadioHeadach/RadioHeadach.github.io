@@ -3,28 +3,33 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <!-- Chrome, Firefox OS and Opera Status Bar Color -->
-  <meta name="theme-color" content="#FFFFFF">
-  <meta property="og:title" content="Preparing Your UI to Run in the Foreground|iOS13 官方文档翻译">
-    <meta property="og:type" content="blog">
-  <title>Preparing Your UI to Run in the Foreground|iOS13 官方文档翻译</title>
-  <!-- Favicon -->
-    <link rel="shortcut icon" href="🌫️">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
-  <link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
-  <link rel="stylesheet" type="text/css" href="css/notablog.css">
-  <link rel="stylesheet" type="text/css" href="css/theme.css">
-  <style>
-    :root {
-      font-size: 18px;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
 
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F45b4de35-e668-4501-b8cd-711c64060c4e%2F5296676_ocean_sea_splash_surf_water_icon.png?table=collection&amp;id=6203be97-46d6-4bfc-9ce6-4457199ab784">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>Preparing Your UI to Run in the Foreground|iOS13 官方文档翻译&nbsp;|&nbsp;RadioHeadache</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Preparing Your UI to Run in the Foreground|iOS13 官方文档翻译">
+  
+  
+  <style>
     .DateTagBar {
       margin-top: 1.0rem;
     }
@@ -33,43 +38,135 @@
 
 <body>
   <nav class="Navbar">
-    <a href="index.html">
-      <div class="Navbar__Btn"><span>🌫️</span> <span>Home</span></div>
-    </a>
-                                                            <span class="Navbar__Delim">&centerdot;</span>
-    <a href="iOS-Dev-Articles.html">
-      <div class="Navbar__Btn"> <span>📱iOS Articles</span></div>
-    </a>
-                                                                                                <span class="Navbar__Delim">&centerdot;</span>
-    <a href="about.html">
-      <div class="Navbar__Btn"><span>😀</span> <span>About</span></div>
-    </a>
-                                <span class="Navbar__Delim">&centerdot;</span>
-    <a href="newsletter.html">
-      <div class="Navbar__Btn"><span>📟</span> <span>Newsletter</span></div>
-    </a>
-          </nav>
-  <header class="Header">
-          <div class="Header__Spacer Header__Spacer--NoCover">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F45b4de35-e668-4501-b8cd-711c64060c4e%2F5296676_ocean_sea_splash_surf_water_icon.png?table=collection&amp;id=6203be97-46d6-4bfc-9ce6-4457199ab784"></span>&nbsp;
+      
+      <span>Home</span>
     </div>
-        <h1 class="Header__Title">Preparing Your UI to Run in the Foreground|iOS13 官方文档翻译</h1>
-            <div class="DateTagBar">
-                <span class="DateTagBar__Item DateTagBar__Date">Posted on Fri, Sep 27, 2019</span>
-                          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="iOS-Dev-Articles.html">
+        <div class="Navbar__Btn">
+          
+          <span>📱iOS Articles</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="daily-logs.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🔖&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Daily Log</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;😀&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="newsletter.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📟&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Newsletter</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+    <h1 class="Header__Title">Preparing Your UI to Run in the Foreground|iOS13 官方文档翻译</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Fri, Sep 27, 2019</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
             <a href="tag/iOS-Dev.html">iOS-Dev</a>
           </span>
-                <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
             <a href="tag/UI.html">UI</a>
           </span>
-                  </div>
-          </header>
-      <article id="https://www.notion.so/bd65a4f8bbc04aba99d780263bddb1d4" class="PageRoot"><div id="https://www.notion.so/8cdd5596be5746b6afa90959fcda57ab" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">文章曾发布于简书：</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.jianshu.com/p/9b4ffa3ba00e">https://www.jianshu.com/p/9b4ffa3ba00e</a></span></span></p></div><ul id="https://www.notion.so/f9e937ccc2e34158b4f1b8a8dee8e035" class="ColorfulBlock ColorfulBlock--ColorGray TableOfContents"><li class="TableOfContents__Item"><a href="#https://www.notion.so/e58fd66e6b7e4cae9f42a763c5306391"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">让你的 UI 准备好在前台运行</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/7289edb661f141b9a90826eca8fec100"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">概述</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/6ec6e1aa8fdf4211b8dd1311b3b5895a"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">进入前台时更新应用程序的数据( Data Model )</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/9c7423e8a9674f93bc5663b85ef04317"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">在激活时配置用户界面和初始任务</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/ffe39b7bf2884ae388a0c167eb10e231"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">出现视图时启动只属于 UI 的特定任务</span></span></div></a></li></ul><h1 id="https://www.notion.so/e58fd66e6b7e4cae9f42a763c5306391" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/e58fd66e6b7e4cae9f42a763c5306391"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">让你的 UI 准备好在前台运行</span></span></h1><div id="https://www.notion.so/20c095c08cfc46ea9d3459a947caffc3" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">本文链接：</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/preparing_your_ui_to_run_in_the_foreground?language=objc">https://developer.apple.com/documentation/uikit/app_and_environment/scenes/preparing_your_ui_to_run_in_the_foreground?language=objc</a></span></span></p></div><blockquote id="https://www.notion.so/c855357058c34b2eb499add1ee4076b8" class="ColorfulBlock ColorfulBlock--ColorDefault Quote"><span class="SemanticStringArray"><span class="SemanticString">配置您的应用以显示在屏幕上。</span></span></blockquote><h2 id="https://www.notion.so/7289edb661f141b9a90826eca8fec100" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/7289edb661f141b9a90826eca8fec100"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">概述</span></span></h2><div id="https://www.notion.so/0f259056502b470fb7e157ed456ab066" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">使用前台过渡( foreground transitions )，让您的应用准备将 UI 显示在显示屏上。 应用程序向前台过渡通常是对用户操作的响应。 例如，当用户点击应用程序的图标时，系统会启动该应用程序并将其带到前台。 使用前台过渡来更新应用的用户界面，获取资源并启动处理用户请求所需的服务。</span></span></p></div><div id="https://www.notion.so/65877df27fc6448082413469ffcc3651" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">所有状态转换都会导致 UIKit 将通知发送到适当的委托对象：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/39a5648dbcdb49aa97f677bf843f90ef" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">在 iOS13 及更新的系统上 —— 一个 </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiscenedelegate?language=objc">UISceneDelegate</a></span><span class="SemanticString"> 对象</span></span></li><li id="https://www.notion.so/f635bb771a314b05b4c152ef8e3ab45c" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">在 iOS12 及更老的系统上 —— 一个</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc">UIApplicationDelegate</a></span><span class="SemanticString"> 对象</span></span></li></ul><div id="https://www.notion.so/73099877fbb545c9bd00c24254ab4525" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">您可以同时支持两种类型的委托对象，但是 UIKit 总是在可用时使用 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">scene delegate</code></span><span class="SemanticString">。 UIKit 仅通知与进入前景的特定场景关联的 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">scene delegate</code></span><span class="SemanticString">。 有关如何配置场景支持的信息，请参阅</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/specifying_the_scenes_your_app_supports?language=objc">指定应用程序支持的场景 Specifying the Scenes Your App Supports</a></span><span class="SemanticString">。</span></span></p></div><h2 id="https://www.notion.so/6ec6e1aa8fdf4211b8dd1311b3b5895a" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/6ec6e1aa8fdf4211b8dd1311b3b5895a"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">进入前台时更新应用程序的数据( Data Model )</span></span></h2><div id="https://www.notion.so/92917b9db5f04a148f0e7ad9618bf5f5" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">在启动时，系统将您的应用程序以非活动状态启动，然后再将其转换为前台。 使用您应用的启动时方法( launch-time methods )来执行当时需要执行的所有工作。 对于处于后台的应用程序，UIKit可通过调用以下方法之一将您的应用程序移至非活动状态：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/9e8a8649d37347fa85f4f73947e977a9" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">对于</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">支持场景</strong></span><span class="SemanticString">( support scenes )的应用程序 —— 适合的场景委托对象的 </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiscenedelegate/3197918-scenewillenterforeground?language=objc"><code class="SemanticString__Fragment SemanticString__Fragment--Code">sceneWillEnterForeground：</code></a></span><span class="SemanticString">方法。</span></span></li><li id="https://www.notion.so/08c72ced13e344149e9d4174b71d6332" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">对于所有其他应用程序 —— </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623076-applicationwillenterforeground?language=objc"><code class="SemanticString__Fragment SemanticString__Fragment--Code">applicationWillEnterForeground：</code></a></span><span class="SemanticString"> 方法。</span></span></li></ul><div id="https://www.notion.so/00306b9f39ad47cfa2994300a961faa9" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">从后台过渡到前景时，请使用以上方法从磁盘加载资源并从网络获取数据。</span></span></p></div><div id="https://www.notion.so/ac023379280b4666a5318e427f40b42a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">有关如何在启动时准备应用程序的信息，请参阅</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/app_and_environment/responding_to_the_launch_of_your_app?language=objc">响应启动应用程序</a></span><span class="SemanticString">。</span></span></p></div><h2 id="https://www.notion.so/9c7423e8a9674f93bc5663b85ef04317" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/9c7423e8a9674f93bc5663b85ef04317"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">在激活时配置用户界面和初始任务</span></span></h2><div id="https://www.notion.so/73c84422fadf4b5fad79b39048e6e1b0" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">在显示应用程序的用户界面之前，系统会将您的应用程序立即切换到活动状态( active state )。 激活是配置应用程序的UI和运行时行为的好时机； 特别是：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/6cff2fd94b3b407caadf45a426d99a90" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">根据需要显示应用程序的窗口。</span></span></li><li id="https://www.notion.so/c1803310b1b241a2b901796eb058896d" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">根据需要更改当前可见的视图控制器。</span></span></li><li id="https://www.notion.so/85e3566756fe4d8e87cd21573512b159" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">更新数据以及视图和控件的状态。</span></span></li><li id="https://www.notion.so/7f601fe2d9e04a84801e2b644799b43e" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">显示控件以恢复暂停的游戏。</span></span></li><li id="https://www.notion.so/ddc7401e06eb4f4bbecd60bdf38227d2" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">启动或恢复用于执行任务的所有调度队列。</span></span></li><li id="https://www.notion.so/0a7f48b4decc435e8553d5683ff227ee" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">更新数据源对象。</span></span></li><li id="https://www.notion.so/4b255e1cbd864903adefe3a4eee29f52" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">启动定期任务的计时器。</span></span></li></ul><div id="https://www.notion.so/ea670e9a087742a29da3679e75f47870" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">将您的配置代码放入以下方法之一：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/bfc8cf0042b54a019ffae548dc1a6572" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">对于</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">基于场景( scene-based )</strong></span><span class="SemanticString"> 的UI —— 适当的场景委托对象的 </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiscenedelegate/3197915-scenedidbecomeactive?language=objc"><code class="SemanticString__Fragment SemanticString__Fragment--Code">sceneDidBecomeActive：</code></a></span><span class="SemanticString">方法。</span></span></li><li id="https://www.notion.so/809d2dd458574999bd16377ec2170b3f" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">对于所有其他应用程序 —— 应用程序委托对象的</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622956-applicationdidbecomeactive?language=objc"><code class="SemanticString__Fragment SemanticString__Fragment--Code">applicationDidBecomeActive：</code></a></span><span class="SemanticString">方法。</span></span></li></ul><div id="https://www.notion.so/958de3de5b824caf9eb62b3bf3bd11fb" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">激活也是在向用户显示用户界面之前对其进行最后润饰的时间。 不要运行任何可能会阻止您的激活方法的代码。 相反，请确保事先拥有所需的一切。 例如，如果您的数据在应用程序外部频繁更改，请在应用程序返回到前台之前，使用后台任务从网络中获取更新。 否则，准备在异步( asynchronously )获取更改时显示现有数据。</span></span></p></div><h2 id="https://www.notion.so/ffe39b7bf2884ae388a0c167eb10e231" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/ffe39b7bf2884ae388a0c167eb10e231"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">出现视图时启动只属于 UI 的特定任务</span></span></h2><div id="https://www.notion.so/526d78d5d48b4b44b7c95014dec58b3a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">当您的激活方法返回( return )时，UIKit 会显示您显示的所有窗口( shows any windows that you made visible )。 它还通知所有相关的视图控制器( controllers )其视图( views )将要出现。 使用视图控制器的 </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiviewcontroller/1621510-viewwillappear?language=objc"><code class="SemanticString__Fragment SemanticString__Fragment--Code">viewWillAppear：</code></a></span><span class="SemanticString">方法对界面执行所有最终更新。 例如：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/ff09de1b1c1d45509a2634954668aef9" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">根据需要启动用户界面动画。</span></span></li><li id="https://www.notion.so/0c9a8ae68fa44db7b5e6f0784a30f7f7" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">如果启用了自动播放，则开始播放媒体文件。</span></span></li><li id="https://www.notion.so/01b559964ab949fa976aea00deed0e49" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">开始以全帧速率显示游戏图形和沉浸式内容。</span></span></li></ul><div id="https://www.notion.so/c7d1c0bb30664dc2adc2fcdb2e519cbc" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">请勿尝试显示其他视图控制器或对用户界面进行重大更改。 当视图控制器出现在屏幕上时，您的界面应该可以显示了( your interface should be ready to display )。</span></span></p></div></article>  <footer class="Footer">
-        <div>&copy; RadioHeadache 2019</div>
-        <div>&centerdot;</div>
-        <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
-            rel="noopener noreferrer">Notablog</a>.
-        </div>
-    </footer>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/bd65a4f8bbc04aba99d780263bddb1d4" class="PageRoot"><div id="https://www.notion.so/8cdd5596be5746b6afa90959fcda57ab" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">文章曾发布于简书：</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.jianshu.com/p/9b4ffa3ba00e">https://www.jianshu.com/p/9b4ffa3ba00e</a></span></span></p></div><ul id="https://www.notion.so/f9e937ccc2e34158b4f1b8a8dee8e035" class="ColorfulBlock ColorfulBlock--ColorGray TableOfContents"><li class="TableOfContents__Item"><a href="#https://www.notion.so/e58fd66e6b7e4cae9f42a763c5306391"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">让你的 UI 准备好在前台运行</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/7289edb661f141b9a90826eca8fec100"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">概述</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/6ec6e1aa8fdf4211b8dd1311b3b5895a"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">进入前台时更新应用程序的数据( Data Model )</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/9c7423e8a9674f93bc5663b85ef04317"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">在激活时配置用户界面和初始任务</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/ffe39b7bf2884ae388a0c167eb10e231"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">出现视图时启动只属于 UI 的特定任务</span></span></div></a></li></ul><h1 id="https://www.notion.so/e58fd66e6b7e4cae9f42a763c5306391" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/e58fd66e6b7e4cae9f42a763c5306391"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">让你的 UI 准备好在前台运行</span></span></h1><div id="https://www.notion.so/20c095c08cfc46ea9d3459a947caffc3" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">本文链接：</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/preparing_your_ui_to_run_in_the_foreground?language=objc">https://developer.apple.com/documentation/uikit/app_and_environment/scenes/preparing_your_ui_to_run_in_the_foreground?language=objc</a></span></span></p></div><blockquote id="https://www.notion.so/c855357058c34b2eb499add1ee4076b8" class="ColorfulBlock ColorfulBlock--ColorDefault Quote"><span class="SemanticStringArray"><span class="SemanticString">配置您的应用以显示在屏幕上。</span></span></blockquote><h2 id="https://www.notion.so/7289edb661f141b9a90826eca8fec100" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/7289edb661f141b9a90826eca8fec100"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">概述</span></span></h2><div id="https://www.notion.so/0f259056502b470fb7e157ed456ab066" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">使用前台过渡( foreground transitions )，让您的应用准备将 UI 显示在显示屏上。 应用程序向前台过渡通常是对用户操作的响应。 例如，当用户点击应用程序的图标时，系统会启动该应用程序并将其带到前台。 使用前台过渡来更新应用的用户界面，获取资源并启动处理用户请求所需的服务。</span></span></p></div><div id="https://www.notion.so/65877df27fc6448082413469ffcc3651" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">所有状态转换都会导致 UIKit 将通知发送到适当的委托对象：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/39a5648dbcdb49aa97f677bf843f90ef" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">在 iOS13 及更新的系统上 —— 一个 </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiscenedelegate?language=objc">UISceneDelegate</a></span><span class="SemanticString"> 对象</span></span></li><li id="https://www.notion.so/f635bb771a314b05b4c152ef8e3ab45c" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">在 iOS12 及更老的系统上 —— 一个</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc">UIApplicationDelegate</a></span><span class="SemanticString"> 对象</span></span></li></ul><div id="https://www.notion.so/73099877fbb545c9bd00c24254ab4525" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">您可以同时支持两种类型的委托对象，但是 UIKit 总是在可用时使用 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">scene delegate</code></span><span class="SemanticString">。 UIKit 仅通知与进入前景的特定场景关联的 </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">scene delegate</code></span><span class="SemanticString">。 有关如何配置场景支持的信息，请参阅</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/app_and_environment/scenes/specifying_the_scenes_your_app_supports?language=objc">指定应用程序支持的场景 Specifying the Scenes Your App Supports</a></span><span class="SemanticString">。</span></span></p></div><h2 id="https://www.notion.so/6ec6e1aa8fdf4211b8dd1311b3b5895a" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/6ec6e1aa8fdf4211b8dd1311b3b5895a"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">进入前台时更新应用程序的数据( Data Model )</span></span></h2><div id="https://www.notion.so/92917b9db5f04a148f0e7ad9618bf5f5" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">在启动时，系统将您的应用程序以非活动状态启动，然后再将其转换为前台。 使用您应用的启动时方法( launch-time methods )来执行当时需要执行的所有工作。 对于处于后台的应用程序，UIKit可通过调用以下方法之一将您的应用程序移至非活动状态：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/9e8a8649d37347fa85f4f73947e977a9" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">对于</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">支持场景</strong></span><span class="SemanticString">( support scenes )的应用程序 —— 适合的场景委托对象的 </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiscenedelegate/3197918-scenewillenterforeground?language=objc"><code class="SemanticString__Fragment SemanticString__Fragment--Code">sceneWillEnterForeground：</code></a></span><span class="SemanticString">方法。</span></span></li><li id="https://www.notion.so/08c72ced13e344149e9d4174b71d6332" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">对于所有其他应用程序 —— </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623076-applicationwillenterforeground?language=objc"><code class="SemanticString__Fragment SemanticString__Fragment--Code">applicationWillEnterForeground：</code></a></span><span class="SemanticString"> 方法。</span></span></li></ul><div id="https://www.notion.so/00306b9f39ad47cfa2994300a961faa9" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">从后台过渡到前景时，请使用以上方法从磁盘加载资源并从网络获取数据。</span></span></p></div><div id="https://www.notion.so/ac023379280b4666a5318e427f40b42a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">有关如何在启动时准备应用程序的信息，请参阅</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/app_and_environment/responding_to_the_launch_of_your_app?language=objc">响应启动应用程序</a></span><span class="SemanticString">。</span></span></p></div><h2 id="https://www.notion.so/9c7423e8a9674f93bc5663b85ef04317" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/9c7423e8a9674f93bc5663b85ef04317"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">在激活时配置用户界面和初始任务</span></span></h2><div id="https://www.notion.so/73c84422fadf4b5fad79b39048e6e1b0" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">在显示应用程序的用户界面之前，系统会将您的应用程序立即切换到活动状态( active state )。 激活是配置应用程序的UI和运行时行为的好时机； 特别是：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/6cff2fd94b3b407caadf45a426d99a90" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">根据需要显示应用程序的窗口。</span></span></li><li id="https://www.notion.so/c1803310b1b241a2b901796eb058896d" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">根据需要更改当前可见的视图控制器。</span></span></li><li id="https://www.notion.so/85e3566756fe4d8e87cd21573512b159" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">更新数据以及视图和控件的状态。</span></span></li><li id="https://www.notion.so/7f601fe2d9e04a84801e2b644799b43e" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">显示控件以恢复暂停的游戏。</span></span></li><li id="https://www.notion.so/ddc7401e06eb4f4bbecd60bdf38227d2" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">启动或恢复用于执行任务的所有调度队列。</span></span></li><li id="https://www.notion.so/0a7f48b4decc435e8553d5683ff227ee" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">更新数据源对象。</span></span></li><li id="https://www.notion.so/4b255e1cbd864903adefe3a4eee29f52" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">启动定期任务的计时器。</span></span></li></ul><div id="https://www.notion.so/ea670e9a087742a29da3679e75f47870" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">将您的配置代码放入以下方法之一：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/bfc8cf0042b54a019ffae548dc1a6572" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">对于</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">基于场景( scene-based )</strong></span><span class="SemanticString"> 的UI —— 适当的场景委托对象的 </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiscenedelegate/3197915-scenedidbecomeactive?language=objc"><code class="SemanticString__Fragment SemanticString__Fragment--Code">sceneDidBecomeActive：</code></a></span><span class="SemanticString">方法。</span></span></li><li id="https://www.notion.so/809d2dd458574999bd16377ec2170b3f" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">对于所有其他应用程序 —— 应用程序委托对象的</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622956-applicationdidbecomeactive?language=objc"><code class="SemanticString__Fragment SemanticString__Fragment--Code">applicationDidBecomeActive：</code></a></span><span class="SemanticString">方法。</span></span></li></ul><div id="https://www.notion.so/958de3de5b824caf9eb62b3bf3bd11fb" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">激活也是在向用户显示用户界面之前对其进行最后润饰的时间。 不要运行任何可能会阻止您的激活方法的代码。 相反，请确保事先拥有所需的一切。 例如，如果您的数据在应用程序外部频繁更改，请在应用程序返回到前台之前，使用后台任务从网络中获取更新。 否则，准备在异步( asynchronously )获取更改时显示现有数据。</span></span></p></div><h2 id="https://www.notion.so/ffe39b7bf2884ae388a0c167eb10e231" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/ffe39b7bf2884ae388a0c167eb10e231"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">出现视图时启动只属于 UI 的特定任务</span></span></h2><div id="https://www.notion.so/526d78d5d48b4b44b7c95014dec58b3a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">当您的激活方法返回( return )时，UIKit 会显示您显示的所有窗口( shows any windows that you made visible )。 它还通知所有相关的视图控制器( controllers )其视图( views )将要出现。 使用视图控制器的 </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.apple.com/documentation/uikit/uiviewcontroller/1621510-viewwillappear?language=objc"><code class="SemanticString__Fragment SemanticString__Fragment--Code">viewWillAppear：</code></a></span><span class="SemanticString">方法对界面执行所有最终更新。 例如：</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/ff09de1b1c1d45509a2634954668aef9" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">根据需要启动用户界面动画。</span></span></li><li id="https://www.notion.so/0c9a8ae68fa44db7b5e6f0784a30f7f7" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">如果启用了自动播放，则开始播放媒体文件。</span></span></li><li id="https://www.notion.so/01b559964ab949fa976aea00deed0e49" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">开始以全帧速率显示游戏图形和沉浸式内容。</span></span></li></ul><div id="https://www.notion.so/c7d1c0bb30664dc2adc2fcdb2e519cbc" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">请勿尝试显示其他视图控制器或对用户界面进行重大更改。 当视图控制器出现在屏幕上时，您的界面应该可以显示了( your interface should be ready to display )。</span></span></p></div></article>
+  <footer class="Footer">
+  <div>&copy; RadioHeadache 2019-2021</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
 </body>
 
 </html>
