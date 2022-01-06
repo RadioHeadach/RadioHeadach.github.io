@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F45b4de35-e668-4501-b8cd-711c64060c4e%2F5296676_ocean_sea_splash_surf_water_icon.png?table=collection&amp;id=6203be97-46d6-4bfc-9ce6-4457199ab784">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>Working with Identifiable items in SwiftUI&nbsp;|&nbsp;RadioHeadache</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Working with Identifiable items in SwiftUI">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧾&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F45b4de35-e668-4501-b8cd-711c64060c4e%2F5296676_ocean_sea_splash_surf_water_icon.png?table=collection&amp;id=6203be97-46d6-4bfc-9ce6-4457199ab784"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="iOS-Dev-Articles.html">
+        <div class="Navbar__Btn">
+          
+          <span>📱iOS Articles</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="daily-logs.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🔖&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Daily Log</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;😀&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="newsletter.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📟&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Newsletter</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧾&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">Working with Identifiable items in SwiftUI</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Thu, Jan 6, 2022</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
+            <a href="tag/SwiftUI.html">SwiftUI</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/87c8dca3bf384cacb131a1092ceb321d" class="PageRoot"><div id="https://www.notion.so/7dc97b7a7f284869a5e0fa5639a547e4" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">When we create static views in SwiftUI – when we hard-code a </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">VStack</strong></code></span><span class="SemanticString">, then a </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">TextField</strong></code></span><span class="SemanticString">, then a </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Button</strong></code></span><span class="SemanticString">, and so on – SwiftUI can see exactly which views we have, and is able to control them, animate them, and more. But when we use </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">List</strong></code></span><span class="SemanticString"> or </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">ForEach</strong></code></span><span class="SemanticString"> to make dynamic views, SwiftUI needs to know how it can identify each item uniquely otherwise it will struggle to compare view hierarchies to figure out what has changed.</span></span></p></div><div id="https://www.notion.so/87bef21def5143079b18748590ffd7f4" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">In our current code, we have this:</span></span></p></div><pre id="https://www.notion.so/b436095b813a4c5bb94e524f656d54f9" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>ForEach(expenses.items, id: \.name) { iteminText(item.name)
+}
+.onDelete(perform: removeItems)</span></span></span></code></pre><div id="https://www.notion.so/aa7a8f36a64745dfae6bac51ac98ef5c" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow">In English, that means “create a new row for every item in the expense items, identified uniquely by its name, showing that name in the row, and calling the </mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">removeItems()</strong></code></mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"> method to delete it.”</mark></span></span></p></div><div id="https://www.notion.so/2bba2ca20f434d2a804814d91aaf34b6" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Then, later, we have this code:</span></span></p></div><pre id="https://www.notion.so/79bc6f4e19504d5683ef5fef594d99ad" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>Button {
+    let expense = ExpenseItem(name: &quot;Test&quot;, type: &quot;Personal&quot;, amount: 5)
+    expenses.items.append(expense)
+} label: {
+    Image(systemName: &quot;plus&quot;)
+}</span></span></span></code></pre><div id="https://www.notion.so/8986ddbc572d4d67b3c7e9039b4bc747" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Every time that button is pressed, it adds a test expense to our list, so we can make sure adding and deleting works.</span></span></p></div><div id="https://www.notion.so/6d8d527d77804c21ad614134d0272242" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Can you see the problem?</span></span></p></div><div id="https://www.notion.so/5cdec35229434199bb1ceccbb56fbbfc" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow">Every time we create an example expense item we’re using the name “Test”, but we’ve also told SwiftUI that it can use the expense name as a unique identifier. So, when our code runs and we delete an item, SwiftUI looks at the array beforehand – “Test”, “Test”, “Test”, “Test” – then looks at the array </mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">afterwards</em></mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"> – “Test”, “Test”, “Test” – and can’t easily tell what changed. </mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">Something</em></mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"> has changed, because one item has disappeared, but SwiftUI can’t be sure which.</mark></span></span></p></div><div id="https://www.notion.so/c3515ae01240417ca24e386c1ce26daa" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">In this situation we’re lucky, because </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">List</strong></code></span><span class="SemanticString"> knows exactly which row we were swiping on, but in many other places that extra won’t be available and our app will start to behave strangely.</span></span></p></div><div id="https://www.notion.so/a143ad428137467ebd87b1d92f9349cf" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">This is a logic error on our behalf: our code is fine, and it doesn’t crash at runtime, but we’ve applied the wrong logic to get to that end result – we’ve told SwiftUI that something will be a unique identifier, when it isn’t unique at all.</span></span></p></div><div id="https://www.notion.so/f8b17d44c3f344c6875f13e1e1fe72d6" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">To fix this we need to think more about our </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">ExpenseItem</strong></code></span><span class="SemanticString"> struct. Right now it has three properties: </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">name</strong></code></span><span class="SemanticString">, </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">type</strong></code></span><span class="SemanticString">, and </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">amount</strong></code></span><span class="SemanticString">. The name by itself </span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">might</em></span><span class="SemanticString"> be unique in practice, but it’s also likely not to be – as soon as the user enters “Lunch” twice we’ll start hitting problems. We could perhaps try to combine the name, type and amount into a new computed property, but even then we’re just delaying the inevitable; it’s still not really unique.</span></span></p></div><div id="https://www.notion.so/699bfb80bb4c43449e3b6f16564b0c6d" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">The smart solution here is to add something to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">ExpenseItem</strong></code></span><span class="SemanticString"> that </span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">is</em></span><span class="SemanticString"> unique, such as an ID number that we assign by hand. That would work, but it does mean tracking the last number we assigned so we don’t use duplicates there either.</span></span></p></div><div id="https://www.notion.so/7c0e9f74d29f436b934e57612a5a9455" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">There is in fact an easier solution, and it’s called </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">UUID</strong></code></span><span class="SemanticString"> – short for “universally unique identifier”, and if </span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">that</em></span><span class="SemanticString"> doesn’t sound unique I’m not sure what does.</span></span></p></div><div id="https://www.notion.so/3b122b972b014decba26b53a507593b5" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">UUIDs are long hexadecimal strings such as this one: 08B15DB4-2F02-4AB8-A965-67A9C90D8A44. So, that’s eight digits, four digits, four digits, four digits, then twelve digits, of which the only requirement is that there’s a 4 in the first number of the third block. If we subtract the fixed 4, we end up with 31 digits, each of which can be one of 16 values – if we generated 1 UUID every second for a billion years, we might begin to have the slightest chance of generating a duplicate.</span></span></p></div><div id="https://www.notion.so/3754e11cce454b6996f589b9a4115ad7" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Now, we could update </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">ExpenseItem</strong></code></span><span class="SemanticString"> to have a </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">UUID</strong></code></span><span class="SemanticString"> property like this:</span></span></p></div><pre id="https://www.notion.so/d1dbed46a75c4e1db54d43e22974307e" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>struct ExpenseItem {
+    let id: UUID
+    let name: String
+    let type: String
+    let amount: Int
+}</span></span></span></code></pre><div id="https://www.notion.so/bab60be8e2c64fdbbbc1674f7354d631" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">And that would work. However, it would also mean we need to generate a UUID by hand, then load and save the UUID along with our other data. So, in this instance we’re going to ask Swift to generate a </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">UUID</strong></code></span><span class="SemanticString"> automatically for us like this:</span></span></p></div><pre id="https://www.notion.so/5a7bf95a2cb54dbabd82ad8bf0b652f7" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>struct ExpenseItem {
+    let id = UUID()
+    let name: String
+    let type: String
+    let amount: Int
+}</span></span></span></code></pre><div id="https://www.notion.so/39e75a02e9c143da9d8b6169fe1c3f64" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Now we don’t need to worry about the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">id</strong></code></span><span class="SemanticString"> value of our expense items – Swift will make sure they are always unique.</span></span></p></div><div id="https://www.notion.so/9755789e0f1e461e8bdc55892b4e4ded" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">With that in place we can now fix our </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">ForEach</strong></code></span><span class="SemanticString">, like this:</span></span></p></div><pre id="https://www.notion.so/812d74de6dbc44dd9d52ea3bf51cc046" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>ForEach(expenses.items, id: \.id) { item in
+    Text(item.name)
+}</span></span></span></code></pre><div id="https://www.notion.so/c004bac3ab49479a82ff27541bfd5e5a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">If you run the app now you’ll see our problem is fixed: SwiftUI can now see exactly which expense item got deleted, and will animate everything correctly.</span></span></p></div><div id="https://www.notion.so/20bd68f66581443e9b2c0ed8e3bcae1b" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">We’re not done with this step quite yet, though. Instead, I’d like you to modify the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">ExpenseItem</strong></code></span><span class="SemanticString"> to make it conform to a new protocol called </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Identifiable</strong></code></span><span class="SemanticString">, like this:</span></span></p></div><pre id="https://www.notion.so/016dbae6f020411b9aed5ae1a67e9708" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>struct ExpenseItem: Identifiable {
+    let id = UUID()
+    let name: String
+    let type: String
+    let amount: Int
+}</span></span></span></code></pre><div id="https://www.notion.so/9406f9ba082d48219c35532872e89368" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow">All we’ve done is add </mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Identifiable</strong></code></mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"> to the list of protocol conformances, nothing more. This is one of the protocols built into Swift, and means “this type can be identified uniquely.” It has only one requirement, which is that there must be a property called </mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">id</strong></code></mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"> that contains a unique identifier. We just added that, so we don’t need to do any extra work – our type conforms to </mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Identifiable</strong></code></mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"> just fine.</mark></span></span></p></div><div id="https://www.notion.so/ae750e7aee114b879cff49afdffd7621" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Now, you might wonder why we added that, because our code was working fine before. Well, because our expense items are now guaranteed to be identifiable uniquely, we no longer need to tell </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">ForEach</strong></code></span><span class="SemanticString"> which property to use for the identifier – it knows there will be an </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">id</strong></code></span><span class="SemanticString"> property and that it will be unique, because that’s the point of the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Identifiable</strong></code></span><span class="SemanticString"> protocol.</span></span></p></div><div id="https://www.notion.so/fa642710b281466492a36f9875b27ea3" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">So, as a result of this change we can modify the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">ForEach</strong></code></span><span class="SemanticString"> again, to this:</span></span></p></div><pre id="https://www.notion.so/c29332b84114471687982689005592a3" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>ForEach(expenses.items) { item in
+    Text(item.name)
+}</span></span></span></code></pre><div id="https://www.notion.so/3f798dfac77b4a3a88501cf9b71771c4" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Much better!</span></span></p></div></article>
+  <footer class="Footer">
+  <div>&copy; RadioHeadache 2019-2021</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+</body>
+
+</html>
