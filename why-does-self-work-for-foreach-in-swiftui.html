@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F45b4de35-e668-4501-b8cd-711c64060c4e%2F5296676_ocean_sea_splash_surf_water_icon.png?table=collection&amp;id=6203be97-46d6-4bfc-9ce6-4457199ab784">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>Why does \.self work for ForEach?&nbsp;|&nbsp;RadioHeadache</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Why does \.self work for ForEach?">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧾&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F45b4de35-e668-4501-b8cd-711c64060c4e%2F5296676_ocean_sea_splash_surf_water_icon.png?table=collection&amp;id=6203be97-46d6-4bfc-9ce6-4457199ab784"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="iOS-Dev-Articles.html">
+        <div class="Navbar__Btn">
+          
+          <span>📱iOS Articles</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="daily-logs.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🔖&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Daily Log</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;😀&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="newsletter.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📟&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Newsletter</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧾&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">Why does \.self work for ForEach?</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Thu, Jan 6, 2022</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--red">
+            <a href="tag/SwiftUI.html">SwiftUI</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/33b4aafbffe84906bfd3b1b6b9d19572" class="PageRoot"><div id="https://www.notion.so/a7f3bbae1b9043e2ba2dd9d121bbf3c1" class="Bookmark"><a href="https://www.hackingwithswift.com/books/ios-swiftui/why-does-self-work-for-foreach"><h5 class="Bookmark__Title">Why does \.self work for ForEach?</h5><p class="Bookmark__Desc">Paul Hudson @twostraws Previously we looked at the various ways ForEach can be used to create dynamic views, but they all had one thing in common: SwiftUI needs to know how to identify each dynamic view uniquely so that it can animate changes correctly.</p><p class="Bookmark__Link">https://www.hackingwithswift.com/books/ios-swiftui/why-does-self-work-for-foreach</p></a></div><div id="https://www.notion.so/cecb5337994141a9883decf39e4c9040" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Previously we looked at the various ways </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">ForEach</strong></code></span><span class="SemanticString"> can be used to create dynamic views, but they all had one thing in common: SwiftUI needs to know how to identify each dynamic view uniquely so that it can animate changes correctly.</span></span></p></div><div id="https://www.notion.so/97deeb52dea7455e8c8e12fb63b2e4b1" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">If an object conforms to the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Identifiable</strong></code></span><span class="SemanticString"> protocol, then SwiftUI will automatically use its </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">id</strong></code></span><span class="SemanticString"> property for uniquing. If we don’t use </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Identifiable</strong></code></span><span class="SemanticString">, then we can use a keypath for a property we know to be unique, such as a book’s ISBN number. But if we don’t conform to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Identifiable</strong></code></span><span class="SemanticString"> and don’t have a keypath that is unique, we can often use </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">\.self</strong></code></span><span class="SemanticString">.</span></span></p></div><div id="https://www.notion.so/78074066abe9461b9341609e4723c7fb" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Previously we used </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">\.self</strong></code></span><span class="SemanticString"> for primitive types such as </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Int</strong></code></span><span class="SemanticString"> and </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">String</strong></code></span><span class="SemanticString">, like this:</span></span></p></div><pre id="https://www.notion.so/b360735d44834171a2a9e744148e8877" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>List {
+    ForEach([2, 4, 6, 8, 10], id: \.self) {
+        Text(&quot;\($0) is even&quot;)
+    }
+}</span></span></span></code></pre><div id="https://www.notion.so/20db23bef894493bb1561c36cea12f0b" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">With Core Data we can use a unique identifier if we want, but we can also use </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">\.self</strong></code></span><span class="SemanticString"> and also have something that works well.</span></span></p></div><div id="https://www.notion.so/7cc125be9c1a4225b6f28c0f0600feb2" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow">When we use </mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">\.self</strong></code></mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"> as an identifier, we mean “the whole object”, but in practice that doesn’t mean much – a struct is a struct, so it doesn’t have any sort of specific identifying information other than its contents. So what actually happens is that Swift computes the </mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"><em class="SemanticString__Fragment SemanticString__Fragment--Italic">hash value</em></mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"> of the struct, which is a way of representing complex data in fixed-size values, then uses that hash as an identifier.</mark></span></span></p></div><div id="https://www.notion.so/750e725bf352436e9c96ada90fa9135a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Hash values can be generated in any number of ways, but the concept is identical for all hash-generating functions:</span></span></p></div><ol class="NumberedListWrapper"><li id="https://www.notion.so/352bb035f3564f4990f2248b618e425e" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">Regardless of the input size, the output should be the same fixed size.</span></span></li><li id="https://www.notion.so/731432d51a0343bf972d0891f9d88c22" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow">Calculating the same hash for an object twice in a row should return the same value.</mark></span></span></li></ol><div id="https://www.notion.so/569ad2b66e30452a93edd567f349aab9" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Those two sound simple, but think about it: if we get the hash of “Hello World” and the hash of the complete works of Shakespeare, both will end up being the same size. This means it’s not possible to convert the hash back into its original value – we can’t convert 40 seemingly random hexadecimal letters and numbers into the complete works of Shakespeare.</span></span></p></div><div id="https://www.notion.so/7a5f225e8b704e8c9856faf6d1959765" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Hashes are commonly used for things like data verification. For example, if you download a 8GB zip file, you can check that it’s correct by comparing your local hash of that file against the server’s – if they match, it means the zip file is identical. Hashes are also used with dictionary keys and sets; that’s how they get their fast look up.</span></span></p></div><div id="https://www.notion.so/ab7d064bfda14f8faa834b4b93f84e1f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">All this matters because when Xcode generates a class for our managed objects, it makes that class conform to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Hashable</strong></code></span><span class="SemanticString">, which is a protocol that means Swift can generate hash values for it, which in turn means we can use </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">\.self</strong></code></span><span class="SemanticString"> for the identifier. This is also why </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">String</strong></code></span><span class="SemanticString"> and </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Int</strong></code></span><span class="SemanticString"> work with </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">\.self</strong></code></span><span class="SemanticString">: they also conform to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Hashable</strong></code></span><span class="SemanticString">.</span></span></p></div><div id="https://www.notion.so/b195a58feea94eadb61b2bfd545ab023" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Hashable</strong></code></span><span class="SemanticString"> is a bit like </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Codable</strong></code></span><span class="SemanticString">: if we want to make a custom type conform to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Hashable</strong></code></span><span class="SemanticString">, then as long as everything it contains also conforms to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Hashable</strong></code></span><span class="SemanticString"> then we don’t need to do any work. To demonstrate this, we could create a custom struct that conforms to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Hashable</strong></code></span><span class="SemanticString"> rather than </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Identifiable</strong></code></span><span class="SemanticString">, and use </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">\.self</strong></code></span><span class="SemanticString"> to identify it:</span></span></p></div><pre id="https://www.notion.so/5df4bda404074182ae1e8b38a6bd67e9" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span>struct Student: Hashable {
+let name: String
+}
+
+struct ContentView: View {
+let students = [Student(name: &quot;Harry Potter&quot;), Student(name: &quot;Hermione Granger&quot;)]
+
+var body:some View {
+        List(students, id: \.self) { studentinText(student.name)
+        }
+    }
+}</span></span></span></code></pre><div id="https://www.notion.so/d3233b35dd634be5a2b0631f8a9047e3" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">We can make </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Student</strong></code></span><span class="SemanticString"> conform to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Hashable</strong></code></span><span class="SemanticString"> because all its properties already conform to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Hashable</strong></code></span><span class="SemanticString">, so Swift will calculate the hash values of each property then combine them into one hash that represents the whole struct. Of course, if we end up with two students that have the same name we’ll hit problems, just like if we had an array of strings with two identical strings.</span></span></p></div><div id="https://www.notion.so/dd35fc9ae47245db8e8b7087b70bc4c2" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Now, you might think this leads to a problem: if we create two Core Data objects with the same values, they’ll generate the same hash, and we’ll hit animation problems. However, Core Data does something really smart here: the objects it creates for us actually have a selection of other properties beyond those we defined in our data model, including one called the object ID – an identifier that is unique to that object, regardless of what properties it contains. These IDs are similar to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">UUID</strong></code></span><span class="SemanticString">, although Core Data generates them sequentially as we create objects.</span></span></p></div><div id="https://www.notion.so/f33f787365444e3db827703fff3e00f6" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">So, </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">\.self</strong></code></span><span class="SemanticString"> works for anything that conforms to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Hashable</strong></code></span><span class="SemanticString">, because Swift will generate the hash value for the object and use that to uniquely identify it. This also works for Core Data’s objects because they already conform to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Hashable</strong></code></span><span class="SemanticString">. So, if you want to use a specific identifier that’s awesome, but you don’t need to because </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">\.self</strong></code></span><span class="SemanticString"> is also an option.</span></span></p></div><div id="https://www.notion.so/9b4b824f76d2445d8bb511b37ee3c269" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Warning:</strong></mark></span><span class="SemanticString"><mark class="SemanticString__Fragment SemanticString__Fragment--HighlightedBg SemanticString__Fragment--BgYellow"> Although calculating the same hash for an object twice in a row should return the same value, calculating it between two runs of your app – i.e., calculating the hash, quitting the app, relaunching, then calculating the hash again – can return different values.</mark></span></span></p></div><div id="https://www.notion.so/7e4b11ca9ef9477782f38d92d4c00012" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div></article>
+  <footer class="Footer">
+  <div>&copy; RadioHeadache 2019-2021</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+</body>
+
+</html>
